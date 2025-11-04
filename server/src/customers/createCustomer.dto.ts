@@ -1,4 +1,4 @@
-import { CustomerAttributes } from '../../interfaces/customer.interface.js';
+import { CustomerAttributes } from '../interfaces/customer.interface.js';
 
 export type CreateCustomerDTO = Pick<
   CustomerAttributes,
