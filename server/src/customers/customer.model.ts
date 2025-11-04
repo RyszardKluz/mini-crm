@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../core/config/db.config.js';
-import { CustomerAttributes as ICustomer } from './customer.interface.js';
+import { sequelize } from '../core/config/db.config';
+import { CustomerAttributes as ICustomer } from './customer.interface';
 
 export class Customer extends Model<ICustomer> {
   declare id: string;

@@ -1,3 +1,3 @@
-import { NoteAttributes as INote } from '../../interfaces/note.interface.js';
+import { NoteAttributes as INote } from './note.interface';
 
 export type NoteResponseDTO = Pick<INote, 'content' | 'createdAt' | 'id' | 'title'>;

@@ -1,6 +1,6 @@
-import { sequelize } from '../core/config/db.config.js';
+import { sequelize } from '../core/config/db.config';
 import { DataTypes, Model } from 'sequelize';
-import { NoteAttributes as INote } from './note.interface.js';
+import { NoteAttributes as INote } from './note.interface';
 
 export class Note extends Model<INote> {
   declare id: string;
