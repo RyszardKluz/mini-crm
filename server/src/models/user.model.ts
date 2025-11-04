@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.config.js';
 import { UserAttributes as IUser } from '../interfaces/user.interface.js';
-import { Customer } from './customer.model.js';
 
 export class User extends Model<IUser> {
   declare id: string;

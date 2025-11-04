@@ -7,4 +7,3 @@ export const sequelize = new Sequelize({
   username: env.db.user,
   password: env.db.password,
 });
-

@@ -1,5 +1,4 @@
 import { DataTypes, Model } from 'sequelize';
-
 import { sequelize } from '../config/db.config.js';
 import { CustomerAttributes as ICustomer } from '../interfaces/customer.interface.js';
 

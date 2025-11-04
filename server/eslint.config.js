@@ -9,7 +9,8 @@ export default tseslint.config(
   {
     ignores: ['node_modules',
       'dist',
-      'build'
+      'build,',
+      'eslint.config.js'
     ],
     languageOptions: {
       parser: tseslint.parser,

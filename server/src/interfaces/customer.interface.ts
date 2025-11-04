@@ -1,5 +1,3 @@
-import { UserAttributes as IUser } from './user.interface.js';
-
 export interface CustomerAttributes {
   id: string;
   name: string;
