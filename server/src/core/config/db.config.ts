@@ -6,4 +6,5 @@ export const sequelize = new Sequelize({
   host: env.db.host,
   username: env.db.user,
   password: env.db.password,
+  dialect: 'mysql',
 });
