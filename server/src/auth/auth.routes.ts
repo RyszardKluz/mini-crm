@@ -1,15 +1,16 @@
+import AuthenticationController from './auth.controller';
 import { Router } from 'express';
 import { validateSchema } from '../core/middlewares/validateSchema.middleware';
-import { createUserSchema } from '../users/createUser.dto';
-import AuthenticationController from './auth.controller';
+import { loginSchema } from './login.dto';
+import { registerSchema } from './register.dto';
 
 export const authRoutes = Router();
 const authenticationController = new AuthenticationController();
 
 authRoutes.post(
   '/register',
-  validateSchema(createUserSchema),
+  validateSchema(registerSchema),
   authenticationController.register,
 );
 
-authRoutes.post('/login');
+authRoutes.post('/login', validateSchema(loginSchema), authenticationController.login);
