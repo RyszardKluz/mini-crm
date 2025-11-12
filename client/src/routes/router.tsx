@@ -1,9 +1,9 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { AuthLayout } from '../layouts/AuthLayout';
-import { LoginPage } from '../pages/auth/LoginPage';
-import { RegisterPage } from '../pages/auth/RegisterPage';
-import { ForgotPasswordPage } from '../pages/auth/ForgotPasswordPage';
-import { DashboardLayout } from '../layouts/DashboardLayout';
+import { AuthLayout } from '../features/auth/components/AuthLayout';
+import { RegisterPage } from '../features/auth/pages/RegisterPage';
+import { ForgotPasswordPage } from '../features/auth/pages/ForgotPasswordPage';
+import { DashboardLayout } from '../features/dashboard/components/DashboardLayout';
+import { LoginPage } from '../features/auth/pages/LoginPage';
 
 export const router = createBrowserRouter([
   {
