@@ -4,6 +4,9 @@ import { RegisterPage } from '../features/auth/pages/RegisterPage';
 import { ForgotPasswordPage } from '../features/auth/pages/ForgotPasswordPage';
 import { DashboardLayout } from '../features/dashboard/components/DashboardLayout';
 import { LoginPage } from '../features/auth/pages/LoginPage';
+import { MainPage } from '../features/dashboard/pages/MainPage';
+import { ClientsPage } from '../features/dashboard/pages/ClientsPage';
+import { MyProfilePage } from '../features/dashboard/pages/MyProfilePage';
 
 export const router = createBrowserRouter([
   {
@@ -12,15 +15,21 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to='/login' replace /> },
       {
-        path: '/login',
+        path: 'login',
         element: <LoginPage />,
       },
-      { path: '/register', element: <RegisterPage /> },
+      { path: 'register', element: <RegisterPage /> },
       { path: 'forgot-password', element: <ForgotPasswordPage /> },
     ],
   },
   {
     path: '/dashboard',
     element: <DashboardLayout />,
+    children: [
+      { index: true, element: <Navigate to='/main' replace /> },
+      { path: 'main', element: <MainPage /> },
+      { path: 'clients ', element: <ClientsPage /> },
+      { path: 'my-profile', element: <MyProfilePage /> },
+    ],
   },
 ]);
