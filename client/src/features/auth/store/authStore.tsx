@@ -21,15 +21,20 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: null,
       isAuthenticated: false,
-      loading: true,
+      loading: false,
 
       login: async (email, password) => {
-        const { user } = await apiClient<{ user: User }>('/auth/login', {
-          method: 'POST',
-          body: JSON.stringify({ email: email, password: password }),
-        });
-        console.log(user);
-        set({ user, isAuthenticated: true });
+        set({ loading: true });
+        try {
+          const { user } = await apiClient<{ user: User }>('/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email: email, password: password }),
+          });
+          set({ user, isAuthenticated: true, loading: false });
+        } catch (error) {
+          set({ loading: false, isAuthenticated: false, user: null });
+          throw new Error((error as Error).message);
+        }
       },
 
       fetchUser: async () => {
