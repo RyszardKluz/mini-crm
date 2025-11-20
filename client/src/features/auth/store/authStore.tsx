@@ -27,6 +27,7 @@ export const useAuthStore = create<AuthState>()(
         set({ loading: true });
         try {
           const { user } = await apiClient<{ user: User }>('/auth/login', {
+            credentials: 'include',
             method: 'POST',
             body: JSON.stringify({ email: email, password: password }),
           });
@@ -42,7 +43,6 @@ export const useAuthStore = create<AuthState>()(
           const { user } = await apiClient<{ user: User }>('/auth/me', {
             credentials: 'include',
           });
-
           set({ user, isAuthenticated: true, loading: false });
         } catch {
           set({ user: null, isAuthenticated: false, loading: false });
