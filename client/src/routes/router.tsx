@@ -7,6 +7,7 @@ import { LoginPage } from '../features/auth/pages/LoginPage';
 import { MainPage } from '../features/dashboard/pages/MainPage';
 import { ClientsPage } from '../features/dashboard/pages/ClientsPage';
 import { MyProfilePage } from '../features/dashboard/pages/MyProfilePage';
+import { ProtectedRoute } from '../pages/ProtectedRoute';
 
 export const router = createBrowserRouter([
   {
@@ -24,12 +25,17 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: <ProtectedRoute />,
     children: [
-      { index: true, element: <Navigate to='/dashboard/main' replace /> },
-      { path: 'main', element: <MainPage /> },
-      { path: 'clients ', element: <ClientsPage /> },
-      { path: 'my-profile', element: <MyProfilePage /> },
+      {
+        element: <DashboardLayout />,
+        children: [
+          { index: true, element: <Navigate to='/dashboard/main' replace /> },
+          { path: 'main', element: <MainPage /> },
+          { path: 'clients', element: <ClientsPage /> },
+          { path: 'my-profile', element: <MyProfilePage /> },
+        ],
+      },
     ],
   },
 ]);
