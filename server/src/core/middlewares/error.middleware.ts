@@ -10,8 +10,8 @@ type ErrorHandler = (
 ) => void;
 
 export const errorHandler: ErrorHandler = (err, req, res, _next) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || 'Internal Server Error';
+  const statusCode = err.statusCode;
+  const message = err.message;
   res.status(statusCode).json({
     error: true,
     message: message,
