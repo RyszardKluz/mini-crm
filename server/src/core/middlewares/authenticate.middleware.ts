@@ -1,4 +1,3 @@
-// src/middlewares/auth.middleware.ts
 import { Request, Response, NextFunction } from 'express';
 import { verifyToken } from '../utils/jwt.util'; // Twój plik z generateToken i verifyToken
 import { JwtPayload } from 'jsonwebtoken';
