@@ -1,16 +1,16 @@
-import { Request, Response } from 'express';
 import { AuthenticationService } from './auth.service';
+import { ControllerFunction } from '../core/types/controller.types';
 export default class AuthenticationController {
   private readonly authenticationService: AuthenticationService;
   constructor() {
     this.authenticationService = new AuthenticationService();
   }
-  register = async (req: Request, res: Response): Promise<void> => {
+  register: ControllerFunction = async (req, res) => {
     const user = await this.authenticationService.register(req.body);
     res.status(201).json(user);
   };
 
-  login = async (req: Request, res: Response): Promise<void> => {
+  login: ControllerFunction = async (req, res) => {
     const { token, userId, email } = await this.authenticationService.login(req.body);
 
     res.cookie('auth_token', token, {
@@ -25,7 +25,7 @@ export default class AuthenticationController {
       .json({ succes: true, user: { userId, email }, message: 'Login success' });
   };
 
-  authorize = async (req: Request, res: Response) => {
+  authorize: ControllerFunction = async (req, res) => {
     if (!req.userId) throw new Error();
     const user = await this.authenticationService.authorize(req.body);
     res.status(200).json({ success: true, user, message: 'Authorized' });
