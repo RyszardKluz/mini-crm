@@ -1,4 +1,4 @@
-import { UserAttributes as IUser } from './user.interface.js';
+import { Optional } from 'sequelize';
 
 export interface CustomerAttributes {
   id: string;
@@ -8,3 +8,5 @@ export interface CustomerAttributes {
   phone?: number;
   userId: string;
 }
+
+export type CustomerCreationAttributes = Optional<CustomerAttributes, 'id'>;

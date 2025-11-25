@@ -1,3 +1,5 @@
+import { Optional } from 'sequelize';
+
 export interface UserAttributes {
   id: string;
   email: string;
@@ -6,3 +8,5 @@ export interface UserAttributes {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export type UserCreationAttributes = Optional<UserAttributes, 'id'>;

@@ -13,5 +13,3 @@ export const env = {
   },
   secret: process.env.JWT_SECRET,
 };
-
-

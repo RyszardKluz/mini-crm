@@ -1,9 +1,11 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../config/db.config.js';
-import { UserAttributes as IUser } from '../interfaces/user.interface.js';
-import { Customer } from './customer.model.js';
+import { sequelize } from '../core/config/db.config';
+import { UserAttributes, UserCreationAttributes } from './user.interface';
 
-export class User extends Model<IUser> {
+export class User
+  extends Model<UserAttributes, UserCreationAttributes>
+  implements UserAttributes
+{
   declare id: string;
   declare email: string;
   declare name: string;
