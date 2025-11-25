@@ -1,3 +1,6 @@
-import { UserAttributes as IUser } from './user.interface';
-
-export type UserResponseDTO = Pick<IUser, 'createdAt' | 'email' | 'id' | 'name'>;
+export type UserResponseDTO = {
+  userId: string;
+  email: string;
+  name?: string;
+  createdAt?: Date;
+};

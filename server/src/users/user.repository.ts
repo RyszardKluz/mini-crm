@@ -17,4 +17,8 @@ export class UserRepository {
     });
     return user;
   };
+  static findById = async (id: string): Promise<User | null> => {
+    const user = await User.findByPk(id);
+    return user;
+  };
 }

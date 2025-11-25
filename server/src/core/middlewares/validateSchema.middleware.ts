@@ -8,7 +8,7 @@ export const validateSchema =
     const result = schema.safeParse(req.body);
     if (!result.success) {
       return res.status(400).json({
-        error: 'Invalid data',
+        error: 'Invalid data structure',
         details: result.error.flatten(),
       });
     }

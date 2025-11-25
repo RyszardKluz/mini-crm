@@ -1,27 +1,21 @@
 import { Request, Response, NextFunction } from 'express';
-import { verifyToken } from '../utils/jwt.util'; // Twój plik z generateToken i verifyToken
+import { verifyToken } from '../utils/jwt.util';
 import { JwtPayload } from 'jsonwebtoken';
+import { AppError } from '../errors/app-error';
 
 export const authenticate = (req: Request, res: Response, next: NextFunction) => {
+  const token = req.cookies?.auth_token;
+
+  if (!token) {
+    throw new AppError('No token provided', 401);
+  }
   try {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'No token provided' });
-    }
-
-    const token = authHeader.split(' ')[1];
     const decoded = verifyToken(token);
-
-    if (!decoded) {
-      return res.status(401).json({ message: 'Invalid or expired token' });
-    }
 
     req.userId = (decoded as JwtPayload).userId;
 
     next();
-  } catch (error) {
-    console.log((error as Error).message);
-    res.status(401).json({ message: 'Unauthorized' });
+  } catch {
+    throw new AppError('Invalid or expired token', 401);
   }
 };
