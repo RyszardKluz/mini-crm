@@ -1,13 +1,13 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../core/config/db.config';
-import { CustomerAttributes as ICustomer } from './customer.interface';
+import { CustomerCreationAttributes } from './customer.interface';
 
-export class Customer extends Model<ICustomer> {
+export class Customer extends Model<CustomerCreationAttributes> {
   declare id: string;
   declare name: string;
   declare email: string;
   declare status: string;
-  declare phone?: number;
+  declare phone?: string;
   declare userId: string;
 }
 
@@ -17,7 +17,7 @@ Customer.init(
     name: { allowNull: false, type: DataTypes.STRING },
     email: { allowNull: false, type: DataTypes.STRING },
     status: DataTypes.STRING,
-    phone: DataTypes.NUMBER,
+    phone: DataTypes.STRING,
     userId: DataTypes.STRING,
   },
   { sequelize, modelName: 'Customer' },

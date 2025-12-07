@@ -5,7 +5,7 @@ export interface CustomerAttributes {
   name: string;
   email: string;
   status: string;
-  phone?: number;
+  phone?: string;
   userId: string;
 }
 
