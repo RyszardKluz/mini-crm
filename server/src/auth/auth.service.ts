@@ -5,7 +5,6 @@ import { hashPassword, comparePassword } from '../core/utils/hashPassword.util';
 import { v4 as uuidV4 } from 'uuid';
 import { LoginDTO } from './login.dto';
 import { generateToken } from '../core/utils/jwt.util';
-import { AuthorizeDTO } from './authorize.dto';
 import { AuthorizeResponseDTO } from './authorizeResponse.dto';
 import { UserResponseDTO } from '../users/userResponse.dto';
 import { AppError } from '../core/errors/app-error';
@@ -41,8 +40,8 @@ export class AuthenticationService {
     const dataTransfer = { token, userId: existingUser.id, email: existingUser.email };
     return dataTransfer;
   };
-  authorize = async (data: AuthorizeDTO): Promise<UserResponseDTO> => {
-    const user = await UserRepository.findById(data.userId);
+  authorize = async (userId: string): Promise<UserResponseDTO> => {
+    const user = await UserRepository.findById(userId);
     if (!user) {
       throw new AppError('Authentication failure!', 500);
     }
