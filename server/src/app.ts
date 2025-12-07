@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import { authRoutes } from './auth/auth.routes';
 import { errorHandler } from './core/middlewares/error.middleware';
+import { customerRoutes } from './customers/customer.routes';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(morgan('dev'));
 
+app.use('/customers', customerRoutes);
 app.use('/auth', authRoutes);
 app.use(errorHandler);
 
