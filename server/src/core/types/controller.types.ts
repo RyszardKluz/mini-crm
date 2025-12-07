@@ -3,5 +3,5 @@ import { Request, Response, NextFunction } from 'express';
 export type ControllerFunction = (
   req: Request,
   res: Response,
-  next?: NextFunction,
+  next: NextFunction,
 ) => Promise<void>;
