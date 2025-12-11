@@ -23,12 +23,12 @@ export const RegisterForm = ({
   });
 
   return (
-    <div className='flex flex-col items-center justify-center  bg-slate-400 text-xs'>
+    <div className='flex flex-col items-center justify-center  font-sans text-xs'>
       <form
         onSubmit={handleSubmit(onFormSubmit)}
         action=''
         method='post'
-        className='flex flex-col gap-3 bg-white p-6 rounded-lg shadow-md w-80'
+        className='flex flex-col gap-3 bg-background p-6 rounded-lg shadow-md w-80'
       >
         <label>Email:</label>
         <input
@@ -71,24 +71,25 @@ export const RegisterForm = ({
 
         <button
           type='submit'
-          className='bg-slate-700 text-white px-4 py-1 rounded-md hover:bg-slate-800'
+          className='bg-secondary-700 text-white px-4 py-1 rounded-md hover:bg-secondary-900'
         >
           Sign up
         </button>
+
+        <div className=' mt-2 text-sm rounded-md '>
+          {' '}
+          Already have an account?
+          <br />
+          <button
+            className='bg-secondary-700 text-white px-2 py-0.5 rounded-md hover:bg-secondary-900'
+            onClick={() => {
+              onNavigateToLogin();
+            }}
+          >
+            Sign in!
+          </button>
+        </div>
       </form>
-      <div className='right-20 relative mt-2 text-sm'>
-        {' '}
-        Already have an account?
-        <br />
-        <button
-          className='mt-1 hover:text-white'
-          onClick={() => {
-            onNavigateToLogin();
-          }}
-        >
-          Sign in!
-        </button>
-      </div>
     </div>
   );
 };

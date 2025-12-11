@@ -22,7 +22,7 @@ export const RegisterPage = () => {
       if (!response.ok) {
         throw new Error(data.message);
       }
-      console.log('User created', data);
+      showToast('User created!', 'success');
     } catch (error) {
       showToast((error as Error).message, 'error');
     }
